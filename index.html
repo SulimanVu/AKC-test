@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="menu"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $.getJSON("Menu.json", function (data) {
+          let newArr = data.serviceTimes.flat();
+
+          for (let i = 0; i < newArr[0].menuCategories.length; i++) {
+            let catName = newArr[0].menuCategories[i].catName;
+            let menuItems = newArr[0].menuCategories[i].menuItems;
+
+            $("#menu").append(`<h2 class="cat">${catName}</h2>`);
+
+            for (let j = 0; j < menuItems.length; j++) {
+              let itemName = menuItems[j].itemName;
+              let itemDescription = menuItems[j].itemDescription;
+              let itemUrl = menuItems[j].url;
+              let itemWeight = menuItems[j].itemWeight;
+              let itemPrice = menuItems[j].itemPrice;
+
+              $("#menu").append(`
+                <div class="card"> 
+                    <img src="https://smartapp.acs-cis.ru/assets/img/Menu/${itemUrl}">
+                    <h3>${
+                      itemName.length < 35
+                        ? itemName
+                        : itemName.slice(0, 35) + "..."
+                    }</h3>
+                    <div class="info">
+                        <span class="description">${
+                          itemDescription.length < 50
+                            ? itemDescription
+                            : itemDescription.slice(0, 50) + "..."
+                        }</span>
+                        <span class="weight">${itemWeight} гр</span>
+                    </div>
+                    <div class="value">
+                        <div class="increment">–</div>
+                        <div class="price">${itemPrice}₽</div>
+                        <div class="decrement">+</div>
+                    </div>
+                </div>`);
+            }
+          }
+          $(".card").on("click", (event) => {
+            console.log($(event.target.innerHTML));
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

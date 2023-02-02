@@ -1,0 +1,74 @@
+body {
+  margin: 0 20px;
+  background-color: rgb(213, 213, 213);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+h2 {
+  font-size: 34px;
+  font-weight: 700;
+}
+h3 {
+  font-size: 24px;
+  font-weight: 500;
+  min-height: 50px;
+  padding: 0 10px;
+}
+.info {
+  min-height: 95px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+span {
+  font-size: 16px;
+  margin: 0 10px;
+}
+.weight {
+  margin: 15px auto;
+}
+
+.card {
+  background-color: rgb(255, 255, 255);
+  width: 280px;
+  min-height: 430px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-align: center;
+  display: inline-block;
+  margin-left: auto;
+}
+.card:not(:last-child) {
+  margin-right: 20px;
+}
+.card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+.value {
+  display: flex;
+  width: 45%;
+  min-height: 50px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 26px;
+}
+
+/* .increment, .decrement */
+.value div:not(:nth-child(2)) {
+  border-radius: 100%;
+  box-shadow: 0 0 1px black;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.value div:nth-child(2) {
+  color: blue;
+}
